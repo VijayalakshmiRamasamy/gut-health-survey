@@ -1063,6 +1063,14 @@
 
         document.getElementById('surveyForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Validate all required fields are answered
+            const form = document.getElementById('surveyForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
             calculateScore();
         });
 
@@ -1080,9 +1088,11 @@
             
             // Q3: fermented foods (checkboxes)
             const q3Values = formData.getAll('q3');
-            q3Values.forEach(val => {
-                totalScore += parseInt(val);
-            });
+            if (q3Values && q3Values.length > 0) {
+                q3Values.forEach(val => {
+                    if (val) totalScore += parseInt(val);
+                });
+            }
 
             // Q5: frequency table (5 items)
             ['q5a', 'q5b', 'q5c', 'q5d', 'q5e'].forEach(q => {
@@ -1102,9 +1112,11 @@
 
             // Q14: gut health steps (checkboxes)
             const q14Values = formData.getAll('q14');
-            q14Values.forEach(val => {
-                totalScore += parseInt(val);
-            });
+            if (q14Values && q14Values.length > 0) {
+                q14Values.forEach(val => {
+                    if (val) totalScore += parseInt(val);
+                });
+            }
             
             // Maximum possible score calculation:
             // Q1-Q4: 3+2+5+2 = 12
@@ -1136,10 +1148,11 @@
         }
 
         function displayResults(score, riskLevel, riskClass, tips) {
-            document.getElementById('scoreNumber').textContent = score;
-            const riskElement = document.getElementById('riskLevel');
-            riskElement.textContent = riskLevel;
-            riskElement.className = 'risk-level ' + riskClass;
+            try {
+                document.getElementById('scoreNumber').textContent = score;
+                const riskElement = document.getElementById('riskLevel');
+                riskElement.textContent = riskLevel;
+                riskElement.className = 'risk-level ' + riskClass;
             
             const tipsContainer = document.getElementById('tipsContainer');
             tipsContainer.innerHTML = '';
@@ -1157,7 +1170,16 @@
             document.getElementById('surveyForm').style.display = 'none';
             document.getElementById('results').classList.add('show');
             
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // iOS-compatible scrolling
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                document.body.scrollTop = 0; // iOS Safari fallback
+                document.documentElement.scrollTop = 0; // iOS Safari fallback
+            }, 100);
+            } catch (error) {
+                console.error('Error displaying results:', error);
+                alert('Error calculating results. Please ensure all questions are answered.');
+            }
         }
 
         function resetSurvey() {

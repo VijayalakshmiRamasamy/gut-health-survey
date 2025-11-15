@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gut Health Survey</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            padding: var(--space-16);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: var(--space-32);
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .header h1 {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+        }
+
+        .header p {
+            font-size: var(--font-size-md);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .survey-section {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-24);
+            margin-bottom: var(--space-20);
+        }
+
+        .section-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-20);
+            color: var(--color-primary);
+            padding-bottom: var(--space-12);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .question {
+            margin-bottom: var(--space-24);
+        }
+
+        .question-text {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-12);
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: var(--space-8) var(--space-12);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            flex: 1 1 auto;
+            min-width: 150px;
+            font-size: var(--font-size-sm);
+        }
+
+        .option-label:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-primary);
+        }
+
+        .option-label input {
+            margin-right: var(--space-8);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: var(--space-6) var(--space-12);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            font-size: var(--font-size-sm);
+            flex: 0 1 auto;
+            white-space: nowrap;
+        }
+
+        .checkbox-label:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-primary);
+        }
+
+        .checkbox-label input {
+            margin-right: var(--space-8);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            width: 100%;
+            margin-top: var(--space-24);
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .results {
+            display: none;
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            padding: var(--space-24);
+            margin-top: var(--space-24);
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-display {
+            text-align: center;
+            padding: var(--space-24);
+            background: var(--color-background);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-24);
+        }
+
+        .score-number {
+            font-size: 48px;
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            margin-bottom: var(--space-8);
+        }
+
+        .score-label {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-8);
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-md);
+            margin-top: var(--space-8);
+        }
+
+        .risk-low {
+            background: rgba(33, 128, 141, 0.15);
+            color: var(--color-success);
+            border: 1px solid var(--color-success);
+        }
+
+        .risk-moderate {
+            background: rgba(168, 75, 47, 0.15);
+            color: var(--color-warning);
+            border: 1px solid var(--color-warning);
+        }
+
+        .risk-high {
+            background: rgba(192, 21, 47, 0.15);
+            color: var(--color-error);
+            border: 1px solid var(--color-error);
+        }
+
+        .recommendations {
+            margin-top: var(--space-24);
+        }
+
+        .recommendations h3 {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .tip {
+            background: var(--color-background);
+            padding: var(--space-16);
+            border-radius: var(--radius-base);
+            border-left: 4px solid var(--color-primary);
+            margin-bottom: var(--space-12);
+        }
+
+        .tip-title {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-4);
+            color: var(--color-text);
+        }
+
+        .tip-content {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .progress-indicator {
+            text-align: center;
+            margin-bottom: var(--space-20);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: var(--space-8);
+            }
+
+            .header h1 {
+                font-size: var(--font-size-2xl);
+            }
+
+            .survey-section {
+                padding: var(--space-16);
+            }
+
+            .option-label {
+                min-width: 120px;
+                font-size: 11px;
+                padding: var(--space-6) var(--space-8);
+            }
+
+            .checkbox-label {
+                font-size: 11px;
+                padding: var(--space-4) var(--space-8);
+            }
+
+            .score-number {
+                font-size: 36px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: var(--space-12);
+        }
+
+        .frequency-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-size-sm);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+        }
+
+        .frequency-table th,
+        .frequency-table td {
+            padding: var(--space-8);
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+
+        .frequency-table th {
+            background: var(--color-secondary);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .frequency-table td:first-child {
+            text-align: left;
+            font-weight: var(--font-weight-medium);
+            min-width: 150px;
+        }
+
+        .frequency-table input[type="radio"] {
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .frequency-table tr:hover {
+            background: var(--color-secondary);
+        }
+
+        @media (max-width: 640px) {
+            .frequency-table {
+                font-size: 11px;
+            }
+
+            .frequency-table th,
+            .frequency-table td {
+                padding: var(--space-4);
+            }
+
+            .frequency-table td:first-child {
+                min-width: 120px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌿 Gut Health &amp; Wellness Survey</h1>
+            <p>Discover how your diet and lifestyle impact your gut health. Complete this survey to receive personalized health awareness tips.</p>
+            <div style="margin-top: var(--space-20); padding-top: var(--space-20); border-top: 1px solid var(--color-border);">
+                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-12);">
+                    <strong>Part of:</strong> AI-Driven Personalized Nutrition Strategies for Reducing Ultra-Processed Foods<br>
+                    <strong>Researchers:</strong> Dr. Padmini Shankar (RD, PhD) &amp; Dr. Vijayalakshmi Ramasamy (PhD)<br>
+                    Georgia Southern University
+                </p>
+            </div>
+        </div>
+
+        <form id="surveyForm">
+            <div class="survey-section">
+                <h2 class="section-title">Section A: Dietary Patterns</h2>
+                
+                <div class="question">
+                    <div class="question-text">1. How many servings of vegetables do you eat per day?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="0" required>
+                            <span>0 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="1">
+                            <span>1-2 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="2">
+                            <span>2-3 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q1" value="3">
+                            <span>More than 3 servings</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">2. How many servings of fruits do you eat per day?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="0" required>
+                            <span>0 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="1">
+                            <span>1 serving</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q2" value="2">
+                            <span>2 or more servings</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">3. Which fermented foods do you eat at least a few times per week? (Select all that apply)</div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="1">
+                            <span>Yogurt</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="1">
+                            <span>Kefir</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="1">
+                            <span>Sauerkraut</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="1">
+                            <span>Tempeh</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="1">
+                            <span>Kimchi</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q3" value="0">
+                            <span>None</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">4. How many servings of <u>whole</u> grains do you consume per day?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="0" required>
+                            <span>0 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="1">
+                            <span>1-2 servings</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q4" value="2">
+                            <span>3 or more servings</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">5. Indicate frequency of the following foods/beverages:</div>
+                    <div class="table-container">
+                        <table class="frequency-table">
+                            <thead>
+                                <tr>
+                                    <th>Food/Beverage</th>
+                                    <th>Never</th>
+                                    <th>Rarely</th>
+                                    <th>Occasionally</th>
+                                    <th>Frequently</th>
+                                    <th>Daily</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fast food</td>
+                                    <td><input type="radio" name="q5a" value="4" required></td>
+                                    <td><input type="radio" name="q5a" value="3"></td>
+                                    <td><input type="radio" name="q5a" value="2"></td>
+                                    <td><input type="radio" name="q5a" value="1"></td>
+                                    <td><input type="radio" name="q5a" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Alcohol</td>
+                                    <td><input type="radio" name="q5b" value="4" required></td>
+                                    <td><input type="radio" name="q5b" value="3"></td>
+                                    <td><input type="radio" name="q5b" value="2"></td>
+                                    <td><input type="radio" name="q5b" value="1"></td>
+                                    <td><input type="radio" name="q5b" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Red meat (beef, pork, lamb)</td>
+                                    <td><input type="radio" name="q5c" value="4" required></td>
+                                    <td><input type="radio" name="q5c" value="3"></td>
+                                    <td><input type="radio" name="q5c" value="2"></td>
+                                    <td><input type="radio" name="q5c" value="1"></td>
+                                    <td><input type="radio" name="q5c" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Processed meats (bacon, hot dogs, etc.)</td>
+                                    <td><input type="radio" name="q5d" value="4" required></td>
+                                    <td><input type="radio" name="q5d" value="3"></td>
+                                    <td><input type="radio" name="q5d" value="2"></td>
+                                    <td><input type="radio" name="q5d" value="1"></td>
+                                    <td><input type="radio" name="q5d" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Diet/artificially sweetened drinks</td>
+                                    <td><input type="radio" name="q5e" value="4" required></td>
+                                    <td><input type="radio" name="q5e" value="3"></td>
+                                    <td><input type="radio" name="q5e" value="2"></td>
+                                    <td><input type="radio" name="q5e" value="1"></td>
+                                    <td><input type="radio" name="q5e" value="0"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">6. In the past week, how often did you consume these ultra-processed foods?</div>
+                    <div class="table-container">
+                        <table class="frequency-table">
+                            <thead>
+                                <tr>
+                                    <th>Food Category</th>
+                                    <th>Never</th>
+                                    <th>1-2x/wk</th>
+                                    <th>3-4x/wk</th>
+                                    <th>5-6x/wk</th>
+                                    <th>Daily</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sweet snacks/cakes/cookies</td>
+                                    <td><input type="radio" name="q6a" value="4" required></td>
+                                    <td><input type="radio" name="q6a" value="3"></td>
+                                    <td><input type="radio" name="q6a" value="2"></td>
+                                    <td><input type="radio" name="q6a" value="1"></td>
+                                    <td><input type="radio" name="q6a" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Juices/Sugary drinks/Soda</td>
+                                    <td><input type="radio" name="q6b" value="4" required></td>
+                                    <td><input type="radio" name="q6b" value="3"></td>
+                                    <td><input type="radio" name="q6b" value="2"></td>
+                                    <td><input type="radio" name="q6b" value="1"></td>
+                                    <td><input type="radio" name="q6b" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Ready-to-eat meals</td>
+                                    <td><input type="radio" name="q6c" value="4" required></td>
+                                    <td><input type="radio" name="q6c" value="3"></td>
+                                    <td><input type="radio" name="q6c" value="2"></td>
+                                    <td><input type="radio" name="q6c" value="1"></td>
+                                    <td><input type="radio" name="q6c" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Pre-packaged meats (e.g., sausages, bacon)</td>
+                                    <td><input type="radio" name="q6d" value="4" required></td>
+                                    <td><input type="radio" name="q6d" value="3"></td>
+                                    <td><input type="radio" name="q6d" value="2"></td>
+                                    <td><input type="radio" name="q6d" value="1"></td>
+                                    <td><input type="radio" name="q6d" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Breakfast cereals</td>
+                                    <td><input type="radio" name="q6e" value="4" required></td>
+                                    <td><input type="radio" name="q6e" value="3"></td>
+                                    <td><input type="radio" name="q6e" value="2"></td>
+                                    <td><input type="radio" name="q6e" value="1"></td>
+                                    <td><input type="radio" name="q6e" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Chips/crackers</td>
+                                    <td><input type="radio" name="q6f" value="4" required></td>
+                                    <td><input type="radio" name="q6f" value="3"></td>
+                                    <td><input type="radio" name="q6f" value="2"></td>
+                                    <td><input type="radio" name="q6f" value="1"></td>
+                                    <td><input type="radio" name="q6f" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Condiments/sauces/mayonnaise/ice cream</td>
+                                    <td><input type="radio" name="q6g" value="4" required></td>
+                                    <td><input type="radio" name="q6g" value="3"></td>
+                                    <td><input type="radio" name="q6g" value="2"></td>
+                                    <td><input type="radio" name="q6g" value="1"></td>
+                                    <td><input type="radio" name="q6g" value="0"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">7. How much water do you drink in a day?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="0" required>
+                            <span>Less than 1 liter (less than 4 cups)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="1">
+                            <span>1-2 liters (4-8 cups)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="2">
+                            <span>2-3 liters (8-12 cups)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q7" value="3">
+                            <span>More than 3 liters (12+ cups)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="survey-section">
+                <h2 class="section-title">Section B: Physical Activity, Medication &amp; Lifestyle</h2>
+                
+                <div class="question">
+                    <div class="question-text">8. How often do you engage in physical activity?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="3" required>
+                            <span>At least 150 minutes/week moderate activity</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="3">
+                            <span>At least 70 minutes/week intense activity</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="1">
+                            <span>Occasionally (less than once per week)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q8" value="0">
+                            <span>Never</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">9. How would you describe the quality of your sleep?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="3" required>
+                            <span>Excellent</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="2">
+                            <span>Good</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="1">
+                            <span>Fair</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q9" value="0">
+                            <span>Poor</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">10. How often do you feel stressed in your daily life?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="3" required>
+                            <span>Rarely</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="2">
+                            <span>Sometimes</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="1">
+                            <span>Often</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q10" value="0">
+                            <span>Almost all the time</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">11. Do you experience digestive discomfort (bloating, stomachache, indigestion, etc.)?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="3" required>
+                            <span>Never</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="2">
+                            <span>Occasionally (not every week)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="1">
+                            <span>At least once a week</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q11" value="0">
+                            <span>Every day</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">12. In the past year, how often have you taken antibiotics?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="3" required>
+                            <span>Never</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="2">
+                            <span>Once</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="1">
+                            <span>Two to three times</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q12" value="0">
+                            <span>More than three times</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">13. How often do you take Proton Pump Inhibitors (e.g., omeprazole, Nexium)?</div>
+                    <div class="options">
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="3" required>
+                            <span>Never</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="2">
+                            <span>2-3 short cycles (two weeks each)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="1">
+                            <span>1-2 cycles (a month or more each)</span>
+                        </label>
+                        <label class="option-label">
+                            <input type="radio" name="q13" value="0">
+                            <span>Daily PPI regimen</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-text">14. Which steps do you take to improve your gut health? (Select all that apply)</div>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>High-fiber diet</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Probiotic foods/supplements</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Prebiotic foods/supplements</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Stay hydrated</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Choose lean meats</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Eat whole foods</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Minimize processed foods</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Mindful eating</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Exercise regularly</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Manage stress</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Prioritize sleep</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Avoid/quit smoking</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Limit caffeine/alcohol</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="q14" value="1">
+                            <span>Identify trigger foods</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Get My Results</button>
+        </form>
+
+        <div id="results" class="results">
+            <div class="score-display">
+                <div class="score-number" id="scoreNumber">0</div>
+                <div class="score-label">Your Gut Health Score</div>
+                <div class="risk-level" id="riskLevel">Low Risk</div>
+            </div>
+
+            <div class="recommendations">
+                <h3>Personalized Health Awareness Tips</h3>
+                <div id="tipsContainer"></div>
+            </div>
+
+            <div style="margin-top: var(--space-24); padding: var(--space-16); background: var(--color-background); border-radius: var(--radius-base); border: 1px solid var(--color-border);">
+                <h4 style="font-size: var(--font-size-md); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-12); color: var(--color-text);">📥 Save Your Results</h4>
+                <div style="display: flex; flex-direction: column; gap: var(--space-8); font-size: var(--font-size-sm); color: var(--color-text-secondary);">
+                    <p><strong>Screenshot:</strong> Capture your results on mobile or desktop</p>
+                    <p><strong>Print/PDF:</strong> Use browser print function (Ctrl+P / Cmd+P) and save as PDF</p>
+                    <p><strong>Share:</strong> Email or message your results to your healthcare provider</p>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="resetSurvey()">Take Survey Again</button>
+        </div>
+    </div>
+
+    <script>
+        const healthTips = {
+            low: [
+                {
+                    title: "🎉 Excellent Work!",
+                    content: "Your gut health practices are on track. Continue maintaining your healthy habits to support long-term digestive wellness."
+                },
+                {
+                    title: "🥗 Keep Up Diverse Nutrition",
+                    content: "You're eating well! Continue including a variety of colorful fruits, vegetables, and whole grains to feed beneficial gut bacteria."
+                },
+                {
+                    title: "💧 Hydration is Key",
+                    content: "Maintain your good hydration habits. Water helps move food through your digestive system and supports nutrient absorption."
+                },
+                {
+                    title: "🏃 Stay Active",
+                    content: "Your physical activity level is great for gut health. Regular exercise helps promote healthy gut bacteria diversity."
+                },
+                {
+                    title: "😴 Quality Sleep Matters",
+                    content: "Keep prioritizing good sleep. The gut-brain connection means quality rest supports digestive health."
+                }
+            ],
+            moderate: [
+                {
+                    title: "🌱 Room for Improvement",
+                    content: "Your gut health could benefit from some adjustments. Small changes in diet and lifestyle can make a big difference."
+                },
+                {
+                    title: "🥦 Increase Fiber Intake",
+                    content: "Aim for at least 25-30g of fiber daily. Add more vegetables, fruits, legumes, and whole grains to feed beneficial gut bacteria."
+                },
+                {
+                    title: "🦠 Add Fermented Foods",
+                    content: "Include probiotic-rich foods like yogurt, kefir, sauerkraut, or kimchi 2-3 times per week to support gut microbiome diversity."
+                },
+                {
+                    title: "💧 Boost Hydration",
+                    content: "Increase water intake to 8-10 cups daily. Proper hydration is essential for digestion and preventing constipation."
+                },
+                {
+                    title: "🏃 Move More",
+                    content: "Aim for 150 minutes of moderate activity weekly. Even a 30-minute daily walk can improve gut motility and reduce inflammation."
+                },
+                {
+                    title: "😴 Improve Sleep Quality",
+                    content: "Aim for 7-9 hours of quality sleep. Establish a regular sleep schedule to support your gut-brain axis."
+                },
+                {
+                    title: "🧘 Manage Stress",
+                    content: "Practice stress-reduction techniques like meditation, deep breathing, or yoga. Chronic stress negatively impacts gut health."
+                },
+                {
+                    title: "🍔 Reduce Processed Foods",
+                    content: "Limit fast food, ultra-processed snacks, and sugary drinks. These can disrupt the balance of gut bacteria."
+                }
+            ],
+            high: [
+                {
+                    title: "⚠️ Take Action Now",
+                    content: "Your gut health needs attention. Making dietary and lifestyle changes can significantly improve your digestive wellness."
+                },
+                {
+                    title: "🥗 Prioritize Whole Foods",
+                    content: "Focus on eating whole, unprocessed foods. Include at least 5 servings of vegetables and 2-3 fruits daily."
+                },
+                {
+                    title: "🌾 Add More Fiber",
+                    content: "Gradually increase fiber intake through vegetables, fruits, legumes, and whole grains. Start slowly to avoid digestive discomfort."
+                },
+                {
+                    title: "🦠 Introduce Probiotics",
+                    content: "Start eating probiotic-rich foods daily: yogurt with live cultures, kefir, or fermented vegetables. Consider a probiotic supplement after consulting a healthcare provider."
+                },
+                {
+                    title: "💧 Hydrate Adequately",
+                    content: "Drink at least 8 cups of water daily. Dehydration can worsen digestive issues and constipation."
+                },
+                {
+                    title: "🚫 Eliminate Fast Food",
+                    content: "Avoid fast food and highly processed foods. These lack nutrients and can harm gut bacteria balance."
+                },
+                {
+                    title: "🏃 Start Moving",
+                    content: "Begin with 10-15 minutes of daily walking and gradually increase. Physical activity is crucial for gut motility."
+                },
+                {
+                    title: "😴 Fix Your Sleep",
+                    content: "Establish a consistent sleep schedule. Poor sleep disrupts gut bacteria and increases inflammation."
+                },
+                {
+                    title: "🧘 Reduce Stress",
+                    content: "High stress directly impacts gut health. Practice daily relaxation techniques and consider counseling if needed."
+                },
+                {
+                    title: "💊 Review Medications",
+                    content: "Frequent antibiotic use can disrupt gut flora. Only use antibiotics when medically necessary and always complete the full course."
+                },
+                {
+                    title: "👨‍⚕️ Consult a Healthcare Provider",
+                    content: "Consider seeing a doctor or registered dietitian for personalized guidance, especially if you have persistent digestive symptoms."
+                },
+                {
+                    title: "📝 Keep a Food Diary",
+                    content: "Track what you eat and how you feel. This can help identify trigger foods and patterns affecting your gut health."
+                }
+            ]
+        };
+
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            calculateScore();
+        });
+
+        function calculateScore() {
+            let totalScore = 0;
+            const formData = new FormData(document.getElementById('surveyForm'));
+            
+            // Q1-Q4, Q7-Q13: standard questions
+            ['q1', 'q2', 'q4', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13'].forEach(q => {
+                const value = formData.get(q);
+                if (value !== null) {
+                    totalScore += parseInt(value);
+                }
+            });
+            
+            // Q3: fermented foods (checkboxes)
+            const q3Values = formData.getAll('q3');
+            q3Values.forEach(val => {
+                totalScore += parseInt(val);
+            });
+
+            // Q5: frequency table (5 items)
+            ['q5a', 'q5b', 'q5c', 'q5d', 'q5e'].forEach(q => {
+                const value = formData.get(q);
+                if (value !== null) {
+                    totalScore += parseInt(value);
+                }
+            });
+
+            // Q6: ultra-processed foods table (7 items)
+            ['q6a', 'q6b', 'q6c', 'q6d', 'q6e', 'q6f', 'q6g'].forEach(q => {
+                const value = formData.get(q);
+                if (value !== null) {
+                    totalScore += parseInt(value);
+                }
+            });
+
+            // Q14: gut health steps (checkboxes)
+            const q14Values = formData.getAll('q14');
+            q14Values.forEach(val => {
+                totalScore += parseInt(val);
+            });
+            
+            // Maximum possible score calculation:
+            // Q1-Q4: 3+2+5+2 = 12
+            // Q5 (5 items): 4×5 = 20
+            // Q6 (7 items): 4×7 = 28
+            // Q7: 3
+            // Q8-Q13: 3+3+3+3+3+3 = 18
+            // Q14: 14 items = 14
+            // Total max = 95
+            const maxScore = 95;
+            const scorePercentage = (totalScore / maxScore) * 100;
+            
+            let riskLevel, riskClass, tips;
+            if (scorePercentage >= 70) {
+                riskLevel = "Low Risk - Excellent Gut Health";
+                riskClass = "risk-low";
+                tips = healthTips.low;
+            } else if (scorePercentage >= 40) {
+                riskLevel = "Moderate Risk - Needs Improvement";
+                riskClass = "risk-moderate";
+                tips = healthTips.moderate;
+            } else {
+                riskLevel = "High Risk - Take Action";
+                riskClass = "risk-high";
+                tips = healthTips.high;
+            }
+            
+            displayResults(totalScore, riskLevel, riskClass, tips);
+        }
+
+        function displayResults(score, riskLevel, riskClass, tips) {
+            document.getElementById('scoreNumber').textContent = score;
+            const riskElement = document.getElementById('riskLevel');
+            riskElement.textContent = riskLevel;
+            riskElement.className = 'risk-level ' + riskClass;
+            
+            const tipsContainer = document.getElementById('tipsContainer');
+            tipsContainer.innerHTML = '';
+            
+            tips.forEach(tip => {
+                const tipElement = document.createElement('div');
+                tipElement.className = 'tip';
+                tipElement.innerHTML = `
+                    <div class="tip-title">${tip.title}</div>
+                    <div class="tip-content">${tip.content}</div>
+                `;
+                tipsContainer.appendChild(tipElement);
+            });
+            
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('results').classList.add('show');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetSurvey() {
+            document.getElementById('surveyForm').reset();
+            document.getElementById('surveyForm').style.display = 'block';
+            document.getElementById('results').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -467,8 +467,8 @@
             <p>Discover how your diet and lifestyle impact your gut health. Complete this survey to receive personalized health awareness tips.</p>
             <div style="margin-top: var(--space-20); padding-top: var(--space-20); border-top: 1px solid var(--color-border);">
                 <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--space-12);">
-                    <strong>Part of:</strong> AI-Driven Personalized Nutrition Strategies for Reducing Ultra-Processed Foods<br>
-                    <strong>Researchers:</strong> Dr. Padmini Shankar (RD, PhD) &amp; Dr. Vijayalakshmi Ramasamy (PhD)<br>
+                    <strong>Part of:</strong> AI-Driven Personalized Nutrition Strategies for Promoting Gut Health<br>
+                    <strong>Researchers:</strong> Dr. Padmini Shankar, RDN, Dr. Vijayalakshmi Ramasamy<br>
                     Georgia Southern University
                 </p>
             </div>
@@ -606,7 +606,7 @@
                                     <td><input type="radio" name="q5c" value="0"></td>
                                 </tr>
                                 <tr>
-                                    <td>Processed meats (bacon, hot dogs, etc.)</td>
+                                    <td>Processed meats (bacon, sausage, pepperoni, deli meats, hot dogs, etc.)</td>
                                     <td><input type="radio" name="q5d" value="4" required></td>
                                     <td><input type="radio" name="q5d" value="3"></td>
                                     <td><input type="radio" name="q5d" value="2"></td>
@@ -666,7 +666,7 @@
                                     <td><input type="radio" name="q6c" value="0"></td>
                                 </tr>
                                 <tr>
-                                    <td>Pre-packaged meats (e.g., sausages, bacon)</td>
+                                    <td>Pre-packaged meats (e.g., turkey, ham, roast beef, salami)</td>
                                     <td><input type="radio" name="q6d" value="4" required></td>
                                     <td><input type="radio" name="q6d" value="3"></td>
                                     <td><input type="radio" name="q6d" value="2"></td>
@@ -690,12 +690,20 @@
                                     <td><input type="radio" name="q6f" value="0"></td>
                                 </tr>
                                 <tr>
-                                    <td>Condiments/sauces/mayonnaise/ice cream</td>
+                                    <td>Condiments/sauces/mayonnaise</td>
                                     <td><input type="radio" name="q6g" value="4" required></td>
                                     <td><input type="radio" name="q6g" value="3"></td>
                                     <td><input type="radio" name="q6g" value="2"></td>
                                     <td><input type="radio" name="q6g" value="1"></td>
                                     <td><input type="radio" name="q6g" value="0"></td>
+                                </tr>
+                                <tr>
+                                    <td>Ice cream</td>
+                                    <td><input type="radio" name="q6h" value="4" required></td>
+                                    <td><input type="radio" name="q6h" value="3"></td>
+                                    <td><input type="radio" name="q6h" value="2"></td>
+                                    <td><input type="radio" name="q6h" value="1"></td>
+                                    <td><input type="radio" name="q6h" value="0"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -839,7 +847,7 @@
                 </div>
 
                 <div class="question">
-                    <div class="question-text">13. How often do you take Proton Pump Inhibitors (e.g., omeprazole, Nexium)?</div>
+                    <div class="question-text">13. How often do you take Proton Pump Inhibitors (PPIs) (omeprazole (Prilosec), esomeprazole (Nexium), lansoprazole (Prevacid), dexlansoprazole (Dexilant), pantoprazole (Protonix), and rabeprazole (AcipHex))?</div>
                     <div class="options">
                         <label class="option-label">
                             <input type="radio" name="q13" value="3" required>
@@ -1093,8 +1101,8 @@
                 }
             });
 
-            // Q6: ultra-processed foods table (7 items)
-            ['q6a', 'q6b', 'q6c', 'q6d', 'q6e', 'q6f', 'q6g'].forEach(q => {
+            // Q6: ultra-processed foods table (8 items)
+            ['q6a', 'q6b', 'q6c', 'q6d', 'q6e', 'q6f', 'q6g', 'q6h'].forEach(q => {
                 const value = formData.get(q);
                 if (value !== null) {
                     totalScore += parseInt(value);
@@ -1112,12 +1120,12 @@
             // Maximum possible score calculation:
             // Q1-Q4: 3+2+5+2 = 12
             // Q5 (5 items): 4×5 = 20
-            // Q6 (7 items): 4×7 = 28
+            // Q6 (8 items): 4×8 = 32
             // Q7: 3
             // Q8-Q13: 3+3+3+3+3+3 = 18
             // Q14: 14 items = 14
-            // Total max = 95
-            const maxScore = 95;
+            // Total max = 99
+            const maxScore = 99;
             const scorePercentage = (totalScore / maxScore) * 100;
             
             let riskLevel, riskClass, tips;

@@ -228,7 +228,6 @@
             transition: all var(--duration-normal) var(--ease-standard);
             font-size: var(--font-size-sm);
             flex: 1 1 auto;
-            white-space: nowrap;
         }
 
         .checkbox-label:hover {
@@ -606,7 +605,7 @@
                                     <td><input type="radio" name="q5c" value="0"></td>
                                 </tr>
                                 <tr>
-                                    <td>Processed meats (bacon, hot dogs, sausage, pepperoni, deli meats, etc.)</td>
+                                    <td>Processed meats (bacon, sausage, pepperoni, deli meats, hot dogs, etc.)</td>
                                     <td><input type="radio" name="q5d" value="4" required></td>
                                     <td><input type="radio" name="q5d" value="3"></td>
                                     <td><input type="radio" name="q5d" value="2"></td>
@@ -847,23 +846,19 @@
                 </div>
 
                 <div class="question">
-                    <div class="question-text">13. How often do you take Proton Pump Inhibitors (PPIs) (omeprazole (Prilosec), esomeprazole (Nexium), lansoprazole (Prevacid), dexlansoprazole (Dexilant), pantoprazole (Protonix), and rabeprazole (AcipHex))?</div>
+                    <div class="question-text">13. In the past year, have you taken Proton Pump Inhibitors such as omeprazole (Prilosec), esomeprazole (Nexium), lansoprazole (Prevacid), dexlansoprazole (Dexilant), pantoprazole (Protonix), and rabeprazole (AcipHex)?</div>
                     <div class="options">
                         <label class="option-label">
-                            <input type="radio" name="q13" value="3" required>
+                            <input type="radio" name="q13" value="2" required>
                             <span>Never</span>
                         </label>
                         <label class="option-label">
-                            <input type="radio" name="q13" value="2">
-                            <span>2-3 short cycles (two weeks each)</span>
-                        </label>
-                        <label class="option-label">
                             <input type="radio" name="q13" value="1">
-                            <span>1-2 cycles (a month or more each)</span>
+                            <span>Rarely/Occasionally</span>
                         </label>
                         <label class="option-label">
                             <input type="radio" name="q13" value="0">
-                            <span>Daily PPI regimen</span>
+                            <span>Frequently</span>
                         </label>
                     </div>
                 </div>
@@ -1101,7 +1096,7 @@
                 }
             });
 
-            // Q6: ultra-processed foods table (8 items - added ice cream as separate row)
+            // Q6: ultra-processed foods table (8 items)
             ['q6a', 'q6b', 'q6c', 'q6d', 'q6e', 'q6f', 'q6g', 'q6h'].forEach(q => {
                 const value = formData.get(q);
                 if (value !== null) {
@@ -1122,10 +1117,10 @@
             // Q5 (5 items): 4×5 = 20
             // Q6 (8 items): 4×8 = 32
             // Q7: 3
-            // Q8-Q13: 3+3+3+3+3+3 = 18
+            // Q8-Q13: 3+3+3+3+3+2 = 17
             // Q14: 14 items = 14
-            // Total max = 99
-            const maxScore = 99;
+            // Total max = 98
+            const maxScore = 98;
             const scorePercentage = (totalScore / maxScore) * 100;
             
             let riskLevel, riskClass, tips;
